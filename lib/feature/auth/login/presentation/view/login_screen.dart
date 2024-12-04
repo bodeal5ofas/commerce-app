@@ -1,9 +1,9 @@
-
+import 'package:ecommerce_app/core/utils/app_routes.dart';
 import 'package:ecommerce_app/core/utils/custom_text_form.dart';
 import 'package:ecommerce_app/core/utils/mytheme.dart';
 import 'package:ecommerce_app/feature/auth/register/presentation/view/register_screen.dart';
 import 'package:flutter/material.dart';
-
+import 'package:go_router/go_router.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -111,8 +111,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 TextButton(
                     onPressed: () {
-                      Navigator.pushReplacementNamed(
-                          context, RegisterScreen.id);
+                      GoRouter.of(context).push(AppRoutes.kregisterView);
                     },
                     child: Text(
                       'Don’t have an account? Create Account',
@@ -126,5 +125,4 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
-
 }
