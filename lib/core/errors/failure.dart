@@ -38,9 +38,11 @@ class ServerFailure extends Failure {
 
   factory ServerFailure.fromResponser(statuscode, response) {
     if (statuscode == 400 || statuscode == 401 || statuscode == 403) {
-      return ServerFailure(errorMessage: response["error"]["message"]);
+      return ServerFailure(errorMessage: response["message"]);
     } else if (statuscode == 402) {
       return ServerFailure(errorMessage: 'Your Request Not found');
+    } else if (statuscode == 409) {
+      return ServerFailure(errorMessage: 'user already exist');
     } else if (statuscode == 500) {
       return ServerFailure(
           errorMessage: 'Internl Server Error,try again later');

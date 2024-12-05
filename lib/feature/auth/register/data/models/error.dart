@@ -1,14 +1,14 @@
 import 'package:equatable/equatable.dart';
 
-class Error extends Equatable {
+class ErrorFailure extends Equatable {
   final String? value;
   final String? msg;
   final String? param;
   final String? location;
 
-  const Error({this.value, this.msg, this.param, this.location});
+  const ErrorFailure({this.value, this.msg, this.param, this.location});
 
-  factory Error.fromJson(Map<String, dynamic> json) => Error(
+  factory ErrorFailure.fromJson(Map<String, dynamic> json) => ErrorFailure(
         value: json['value'] as String?,
         msg: json['msg'] as String?,
         param: json['param'] as String?,

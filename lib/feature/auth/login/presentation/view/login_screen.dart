@@ -1,8 +1,11 @@
 import 'package:ecommerce_app/core/utils/app_routes.dart';
+import 'package:ecommerce_app/core/utils/custom_show_snack_bar.dart';
 import 'package:ecommerce_app/core/utils/custom_text_form.dart';
 import 'package:ecommerce_app/core/utils/mytheme.dart';
-import 'package:ecommerce_app/feature/auth/register/presentation/view/register_screen.dart';
+import 'package:ecommerce_app/feature/auth/login/presentation/view_model/login_cubit/login_cubit.dart';
+//import 'package:ecommerce_app/feature/auth/register/presentation/view/register_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -15,110 +18,126 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   ThemeData mytheme = Mytheme().mainTheme;
-  TextEditingController nameController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+
   IconData iconPassword = Icons.visibility_off;
-  GlobalKey<FormState> formKey = GlobalKey();
+  late LoginCubit loginCubit;
+  @override
+  void initState() {
+    loginCubit = BlocProvider.of<LoginCubit>(context);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        padding: const EdgeInsets.all(10),
-        child: Form(
-          key: formKey,
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                const SizedBox(
-                  height: 10,
-                ),
-                Image.asset('assets/images/route name.png'),
-                Text(
-                  'Welcome Back To Route',
-                  style: mytheme.textTheme.titleLarge,
-                ),
-                const Text(
-                  'Please sign in with your mail',
-                  style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w300,
-                      color: Colors.white),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  'User Name',
-                  style: mytheme.textTheme.titleLarge,
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                CustomTextFormField(
-                    hintText: 'Enter your Name', controller: nameController),
-                const SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  'Password',
-                  style: mytheme.textTheme.titleLarge,
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                CustomTextFormField(
-                  hintText: 'Enter your password',
-                  controller: passwordController,
-                  isPasword: true,
-                  suffixIcon: IconButton(
-                      onPressed: () {
-                        if (iconPassword == Icons.visibility_off) {
-                          iconPassword = Icons.visibility;
-                        } else {
-                          iconPassword = Icons.visibility_off;
-                        }
-                        setState(() {});
-                      },
-                      icon: Icon(iconPassword)),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                const Text('Forgot password',
-                    textAlign: TextAlign.end,
+    return BlocListener<LoginCubit, LoginState>(
+      listener: (context, state) {
+        if (state is LoginSuccessState) {
+          customShowSnackBar(
+              context: context,
+              message: 'Suceess,Welcome: ${state.loginResponse.user!.name}');
+        } else if (state is LoginFailureState) {
+          customShowSnackBar(context: context, message: state.errMessage);
+        } else {
+          customShowSnackBar(context: context, message: 'loading');
+        }
+      },
+      child: Scaffold(
+        body: Container(
+          padding: const EdgeInsets.all(10),
+          child: Form(
+            key: loginCubit.formKey,
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Image.asset('assets/images/route name.png'),
+                  Text(
+                    'Welcome Back To Route',
+                    style: mytheme.textTheme.titleLarge,
+                  ),
+                  const Text(
+                    'Please sign in with your mail',
                     style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w400)),
-                const SizedBox(
-                  height: 30,
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    if (formKey.currentState!.validate()) {
-                      //login account
-                    }
-                  },
-                  child: Center(
-                    child: Text(
-                      'Login',
-                      style: mytheme.textTheme.titleLarge!
-                          .copyWith(color: mytheme.primaryColor),
+                        fontSize: 16,
+                        fontWeight: FontWeight.w300,
+                        color: Colors.white),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    'Email',
+                    style: mytheme.textTheme.titleLarge,
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  CustomTextFormField(
+                      hintText: 'Enter your Email',
+                      controller: loginCubit.emailController),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    'Password',
+                    style: mytheme.textTheme.titleLarge,
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  CustomTextFormField(
+                    hintText: 'Enter your password',
+                    controller: loginCubit.passwordController,
+                    isPasword: true,
+                    suffixIcon: IconButton(
+                        onPressed: () {
+                          if (iconPassword == Icons.visibility_off) {
+                            iconPassword = Icons.visibility;
+                          } else {
+                            iconPassword = Icons.visibility_off;
+                          }
+                          setState(() {});
+                        },
+                        icon: Icon(iconPassword)),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  const Text('Forgot password',
+                      textAlign: TextAlign.end,
+                      style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w400)),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      loginCubit.login();
+                    },
+                    child: Center(
+                      child: Text(
+                        'Login',
+                        style: mytheme.textTheme.titleLarge!
+                            .copyWith(color: mytheme.primaryColor),
+                      ),
                     ),
                   ),
-                ),
-                TextButton(
-                    onPressed: () {
-                      GoRouter.of(context).push(AppRoutes.kregisterView);
-                    },
-                    child: Text(
-                      'Don’t have an account? Create Account',
-                      style:
-                          mytheme.textTheme.titleLarge!.copyWith(fontSize: 18),
-                    ))
-              ],
+                  TextButton(
+                      onPressed: () {
+                        GoRouter.of(context).push(AppRoutes.kregisterView);
+                      },
+                      child: Text(
+                        'Don’t have an account? Create Account',
+                        style: mytheme.textTheme.titleLarge!
+                            .copyWith(fontSize: 18),
+                      ))
+                ],
+              ),
             ),
           ),
         ),

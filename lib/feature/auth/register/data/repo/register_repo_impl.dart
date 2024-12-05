@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:ecommerce_app/core/errors/failure.dart';
@@ -16,21 +18,21 @@ class RegisterRepoImpl extends RegisterRepo {
     required String repassword,
     required String phone,
   }) async {
-    RegisterResponseSucessModel userResponse =RegisterResponseSucessModel();
     try {
-       userResponse = await apiService.register(
+      var userResponse = await apiService.register(
         name: name,
         email: email,
         password: password,
         repassword: repassword,
         phone: phone,
       );
-
-      return right(userResponse);
-    } catch (e) {
-      if (userResponse.error?.statusMsg == 'fail') {
+      if (userResponse.statusMsg == 'fail') {
         return left(ServerFailure(errorMessage: userResponse.message!));
       }
+      return right(userResponse);
+    } catch (e) {
+      log(e.toString());
+
       if (e is DioException) {
         return left(ServerFailure.fromDioException(e));
       }
