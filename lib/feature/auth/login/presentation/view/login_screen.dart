@@ -35,6 +35,7 @@ class _LoginScreenState extends State<LoginScreen> {
           customShowSnackBar(
               context: context,
               message: 'Suceess,Welcome: ${state.loginResponse.user!.name}');
+          GoRouter.of(context).pushReplacement(AppRoutes.kHomewView);
         } else if (state is LoginFailureState) {
           customShowSnackBar(context: context, message: state.errMessage);
         } else {

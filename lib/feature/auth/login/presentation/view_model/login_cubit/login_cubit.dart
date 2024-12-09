@@ -11,21 +11,22 @@ part 'login_state.dart';
 class LoginCubit extends Cubit<LoginState> {
   LoginCubit(this.loginRepo) : super(LoginInitialState());
   LoginRepo loginRepo;
-    TextEditingController emailController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey();
   login() async {
     if (formKey.currentState!.validate()) {
-  emit(LoginLoadingState());
-  var result = await loginRepo.login(email: emailController.text, password: passwordController.text);
-  result.fold(
-    (error) {
-      emit(LoginFailureState(errMessage: error.errorMessage));
-    },
-    (response) {
-      emit(LoginSuccessState(loginResponse: response));
-    },
-  );
-}
+      emit(LoginLoadingState());
+      var result = await loginRepo.login(
+          email: emailController.text, password: passwordController.text);
+      result.fold(
+        (error) {
+          emit(LoginFailureState(errMessage: error.errorMessage));
+        },
+        (response) {
+          emit(LoginSuccessState(loginResponse: response));
+        },
+      );
+    }
   }
 }

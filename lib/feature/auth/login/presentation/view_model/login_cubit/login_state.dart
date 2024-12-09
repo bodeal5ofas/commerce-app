@@ -20,5 +20,5 @@ class LoginFailureState extends LoginState {
 class LoginSuccessState extends LoginState {
   final LoginResponse loginResponse;
 
-const  LoginSuccessState({required this.loginResponse});
+  const LoginSuccessState({required this.loginResponse});
 }

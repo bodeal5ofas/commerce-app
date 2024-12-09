@@ -35,7 +35,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       listener: (context, state) {
         if (state is RegisterSucessfullState) {
           customShowSnackBar(context: context, message: 'Register Sucessfully');
-          GoRouter.of(context).pushReplacement(AppRoutes.kloginView);
+          GoRouter.of(context).pushReplacement(AppRoutes.kHomewView);
         } else if (state is RegisterFailureState) {
           log(state.errMessage);
           customShowSnackBar(context: context, message: state.errMessage);

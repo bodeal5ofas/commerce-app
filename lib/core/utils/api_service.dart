@@ -5,8 +5,10 @@ import 'package:ecommerce_app/feature/auth/login/data/models/login_request.dart'
 import 'package:ecommerce_app/feature/auth/login/data/models/login_response/login_response.dart';
 import 'package:ecommerce_app/feature/auth/register/data/models/register_request_model.dart';
 import 'package:ecommerce_app/feature/auth/register/data/models/register_response_sucess_model/register_response_sucess_model.dart';
+import 'package:ecommerce_app/feature/home/data/models/home_tape/category_response.dart';
 
 class ApiService {
+  // base url https://ecommerce.routemisr.com
   ApiService(this._dio);
   final Dio _dio;
   Future<RegisterResponseSucessModel> register({
@@ -38,4 +40,27 @@ class ApiService {
         data: loginRequest.toJson());
     return LoginResponse.fromJson(response.data);
   }
+
+  Future<List<CategoryResponse>> getAllCategory() async {
+    List<CategoryResponse> categoryList = [];
+    var response =
+        await _dio.get('https://ecommerce.routemisr.com/api/v1/categories');
+    var data = response.data['data'];
+    for (var element in data) {
+      categoryList.add(CategoryResponse.fromJson(element));
+    }
+    return categoryList;
+  }
+
+  Future<List<CategoryResponse>> getAllBrands() async {
+    List<CategoryResponse> categoryList = [];
+    var response =
+        await _dio.get('https://ecommerce.routemisr.com/api/v1/brands');
+    var data = response.data['data'];
+    for (var element in data) {
+      categoryList.add(CategoryResponse.fromJson(element));
+    }
+    return categoryList;
+  }
+
 }

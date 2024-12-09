@@ -8,7 +8,7 @@ class LoginResponse extends Equatable {
   final User? user;
   final String? token;
   final String? statusMsg;
-  const LoginResponse({this.message, this.user, this.token,this.statusMsg});
+  const LoginResponse({this.message, this.user, this.token, this.statusMsg});
 
   factory LoginResponse.fromJson(Map<String, dynamic> json) => LoginResponse(
         message: json['message'] as String?,

@@ -8,8 +8,12 @@ class Mytheme {
   ThemeData mainTheme = ThemeData(
       primaryColor: mainColor,
       scaffoldBackgroundColor: mainColor,
-      textTheme: const TextTheme(
-        titleLarge: TextStyle(
+      textTheme: TextTheme(
+        titleLarge: const TextStyle(
             color: Colors.white, fontSize: 24, fontWeight: FontWeight.w600),
+        titleMedium: TextStyle(
+          color: Mytheme.mainColor,
+          fontSize: 24,
+        ),
       ));
 }
