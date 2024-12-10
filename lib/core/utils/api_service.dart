@@ -5,6 +5,7 @@ import 'package:ecommerce_app/feature/auth/login/data/models/login_request.dart'
 import 'package:ecommerce_app/feature/auth/login/data/models/login_response/login_response.dart';
 import 'package:ecommerce_app/feature/auth/register/data/models/register_request_model.dart';
 import 'package:ecommerce_app/feature/auth/register/data/models/register_response_sucess_model/register_response_sucess_model.dart';
+import 'package:ecommerce_app/feature/home/data/models/category_tab/product/datum.dart';
 import 'package:ecommerce_app/feature/home/data/models/home_tape/category_response.dart';
 
 class ApiService {
@@ -63,4 +64,14 @@ class ApiService {
     return categoryList;
   }
 
+  Future<List<ProductModel>> getAllProducts() async {
+    List<ProductModel> productsList = [];
+    var response =
+        await _dio.get('https://ecommerce.routemisr.com/api/v1/products');
+    var data = response.data['data'];
+    for (var element in data) {
+      productsList.add(ProductModel.fromJson(element));
+    }
+    return productsList;
+  }
 }

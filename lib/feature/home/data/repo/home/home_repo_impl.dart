@@ -21,6 +21,7 @@ class HomeRepoImpl extends HomeRepo {
       }
     }
   }
+
   @override
   Future<Either<Failure, List<CategoryResponse>>> getAllBrands() async {
     try {

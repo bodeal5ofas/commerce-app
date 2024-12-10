@@ -40,6 +40,7 @@ dependencies:
   flutter_screenutil: ^5.9.3
   get_it: ^8.0.2
   go_router: ^14.6.1
+  readmore: ^3.0.0
 
 dev_dependencies:
   flutter_lints: ^3.0.0

@@ -11,7 +11,6 @@ class CategoryResponse extends Equatable {
     this.name,
     this.slug,
     this.image,
-
   });
 
   factory CategoryResponse.fromJson(Map<String, dynamic> json) {
@@ -20,7 +19,6 @@ class CategoryResponse extends Equatable {
       name: json['name'] as String?,
       slug: json['slug'] as String?,
       image: json['image'] as String?,
-
     );
   }
 
@@ -29,7 +27,6 @@ class CategoryResponse extends Equatable {
         'name': name,
         'slug': slug,
         'image': image,
-        
       };
 
   @override
@@ -39,7 +36,6 @@ class CategoryResponse extends Equatable {
       name,
       slug,
       image,
-      
     ];
   }
 }

@@ -10,7 +10,7 @@ class CategoryRowWidgets extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
-        title,
+          title,
           style: Theme.of(context).textTheme.titleMedium,
         ),
         Text(

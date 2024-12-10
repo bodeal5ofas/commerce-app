@@ -23,6 +23,11 @@ class CustomBanerSection extends StatelessWidget {
       // },
       autoPlayInterval: 3000,
       isLoop: false,
+      // children: images.map(
+      //   (urlImage) {
+      //     return Image.network(urlImage,fit: BoxFit.fill,);
+      //   },
+      // ).toList(),
       children: [
         CustomLogo(
           imageUrl: images[0],

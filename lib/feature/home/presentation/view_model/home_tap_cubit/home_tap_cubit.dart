@@ -23,7 +23,7 @@ class HomeTapCubit extends Cubit<HomeTabState> {
     );
   }
 
-   getAllBrands() async {
+  getAllBrands() async {
     emit(HomeBrandLoadingState());
     var result = await homeRepo.getAllBrands();
     result.fold(

@@ -13,7 +13,7 @@ class Mytheme {
             color: Colors.white, fontSize: 24, fontWeight: FontWeight.w600),
         titleMedium: TextStyle(
           color: Mytheme.mainColor,
-          fontSize: 24,
+          fontSize: 18,
         ),
       ));
 }
