@@ -4,6 +4,7 @@ import 'package:ecommerce_app/core/utils/app_routes.dart';
 import 'package:ecommerce_app/core/utils/custom_show_snack_bar.dart';
 import 'package:ecommerce_app/core/utils/custom_text_form.dart';
 import 'package:ecommerce_app/core/utils/mytheme.dart';
+import 'package:ecommerce_app/core/utils/shared_prefrence_utils.dart';
 import 'package:ecommerce_app/feature/auth/register/presentation/view_model/register_cubit/register_cubit.dart';
 //import 'package:ecommerce_app/feature/auth/login/presentation/view/login_screen.dart';
 import 'package:flutter/material.dart';
@@ -35,6 +36,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
       listener: (context, state) {
         if (state is RegisterSucessfullState) {
           customShowSnackBar(context: context, message: 'Register Sucessfully');
+          SharedPrefrenceUtils.set(
+              key: 'token', value: state.responseSucessModel.token);
           GoRouter.of(context).pushReplacement(AppRoutes.kHomewView);
         } else if (state is RegisterFailureState) {
           log(state.errMessage);

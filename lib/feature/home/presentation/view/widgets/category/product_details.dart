@@ -1,9 +1,11 @@
+import 'package:ecommerce_app/core/utils/app_routes.dart';
 import 'package:ecommerce_app/core/utils/mytheme.dart';
 import 'package:ecommerce_app/feature/home/data/models/category_tab/product/datum.dart';
 import 'package:ecommerce_app/feature/home/presentation/view/widgets/category/details_images.dart';
 import 'package:ecommerce_app/feature/home/presentation/view/widgets/category/details_info.dart';
 import 'package:ecommerce_app/feature/home/presentation/view/widgets/category/details_price_info.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class ProductDetails extends StatelessWidget {
   const ProductDetails({super.key, required this.productModel});
@@ -26,7 +28,9 @@ class ProductDetails extends StatelessWidget {
                 color: Mytheme.mainColor,
               )),
           IconButton(
-              onPressed: () {},
+              onPressed: () {
+                GoRouter.of(context).push(AppRoutes.kCartView);
+              },
               icon: Icon(
                 Icons.shopping_cart_outlined,
                 color: Mytheme.mainColor,
@@ -39,9 +43,12 @@ class ProductDetails extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             DetailsImages(images: productModel.images ?? []),
-          const SizedBox(height: 10,),
-            DetailsInfo(productModel: productModel,),
-            
+            const SizedBox(
+              height: 10,
+            ),
+            DetailsInfo(
+              productModel: productModel,
+            ),
           ],
         ),
       ),

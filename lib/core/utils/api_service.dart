@@ -1,12 +1,16 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
+import 'package:ecommerce_app/core/utils/shared_prefrence_utils.dart';
 import 'package:ecommerce_app/feature/auth/login/data/models/login_request.dart';
 import 'package:ecommerce_app/feature/auth/login/data/models/login_response/login_response.dart';
 import 'package:ecommerce_app/feature/auth/register/data/models/register_request_model.dart';
 import 'package:ecommerce_app/feature/auth/register/data/models/register_response_sucess_model/register_response_sucess_model.dart';
+import 'package:ecommerce_app/feature/home/data/models/category_tab/cart/add_product_cart_response/add_product_cart_response.dart';
+import 'package:ecommerce_app/feature/home/data/models/category_tab/cart/get_cart_product_response/get_cart_product_response.dart';
 import 'package:ecommerce_app/feature/home/data/models/category_tab/product/datum.dart';
 import 'package:ecommerce_app/feature/home/data/models/home_tape/category_response.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ApiService {
   // base url https://ecommerce.routemisr.com
@@ -73,5 +77,24 @@ class ApiService {
       productsList.add(ProductModel.fromJson(element));
     }
     return productsList;
+  }
+
+  Future<AddProductCartResponse> addProductCart(
+      {required String productId}) async {
+    _dio.options.headers["token"] =
+        SharedPrefrenceUtils.get(key: 'token').toString();
+    var response = await _dio.post(
+      'https://ecommerce.routemisr.com/api/v1/cart',
+      data: {"productId": productId},
+    );
+    return AddProductCartResponse.fromJson(response.data);
+  }
+
+  Future<GetCartProductResponse> getCardProducts() async {
+    _dio.options.headers["token"] =
+        SharedPrefrenceUtils.get(key: 'token').toString();
+    var response =
+        await _dio.get('https://ecommerce.routemisr.com/api/v1/cart');
+    return GetCartProductResponse.fromJson(response.data);
   }
 }

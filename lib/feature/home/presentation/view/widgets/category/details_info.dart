@@ -4,7 +4,7 @@ import 'package:ecommerce_app/feature/home/presentation/view/widgets/category/de
 import 'package:ecommerce_app/feature/home/presentation/view/widgets/category/details_price_info.dart';
 import 'package:ecommerce_app/feature/home/presentation/view/widgets/category/details_title.dart';
 import 'package:flutter/material.dart';
-import 'package:readmore/readmore.dart';
+//import 'package:readmore/readmore.dart';
 
 class DetailsInfo extends StatefulWidget {
   const DetailsInfo({super.key, required this.productModel});
@@ -29,7 +29,7 @@ class _DetailsInfoState extends State<DetailsInfo> {
         Row(
           children: [
             Container(
-              padding: EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
                   border: Border.all(color: Mytheme.mainColor)),
@@ -91,8 +91,10 @@ class _DetailsInfoState extends State<DetailsInfo> {
         const SizedBox(
           height: 15,
         ),
-       DetailsDescription(productModel: widget.productModel,),
-           const SizedBox(
+        DetailsDescription(
+          productModel: widget.productModel,
+        ),
+        const SizedBox(
           height: 20,
         ),
         DetailsPriceInfo(
@@ -102,4 +104,3 @@ class _DetailsInfoState extends State<DetailsInfo> {
     );
   }
 }
-

@@ -2,6 +2,7 @@ import 'package:ecommerce_app/core/utils/app_routes.dart';
 import 'package:ecommerce_app/core/utils/custom_show_snack_bar.dart';
 import 'package:ecommerce_app/core/utils/custom_text_form.dart';
 import 'package:ecommerce_app/core/utils/mytheme.dart';
+import 'package:ecommerce_app/core/utils/shared_prefrence_utils.dart';
 import 'package:ecommerce_app/feature/auth/login/presentation/view_model/login_cubit/login_cubit.dart';
 //import 'package:ecommerce_app/feature/auth/register/presentation/view/register_screen.dart';
 import 'package:flutter/material.dart';
@@ -35,6 +36,8 @@ class _LoginScreenState extends State<LoginScreen> {
           customShowSnackBar(
               context: context,
               message: 'Suceess,Welcome: ${state.loginResponse.user!.name}');
+          SharedPrefrenceUtils.set(
+              key: 'token', value: state.loginResponse.token);
           GoRouter.of(context).pushReplacement(AppRoutes.kHomewView);
         } else if (state is LoginFailureState) {
           customShowSnackBar(context: context, message: state.errMessage);

@@ -4,6 +4,10 @@ import 'package:ecommerce_app/feature/auth/login/data/repos/login_repo.dart';
 import 'package:ecommerce_app/feature/auth/login/data/repos/login_repo_impl.dart';
 import 'package:ecommerce_app/feature/auth/register/data/repo/register_repo.dart';
 import 'package:ecommerce_app/feature/auth/register/data/repo/register_repo_impl.dart';
+import 'package:ecommerce_app/feature/home/data/repo/app/app_repo.dart';
+import 'package:ecommerce_app/feature/home/data/repo/app/app_repo_impl.dart';
+import 'package:ecommerce_app/feature/home/data/repo/cart_repo/cart_repo.dart';
+import 'package:ecommerce_app/feature/home/data/repo/cart_repo/cart_repo_impl.dart';
 import 'package:ecommerce_app/feature/home/data/repo/category/category_repo.dart';
 import 'package:ecommerce_app/feature/home/data/repo/category/category_repo_impl.dart';
 import 'package:ecommerce_app/feature/home/data/repo/home/home_repo.dart';
@@ -19,4 +23,6 @@ void setUpLocator() async {
   getIt.registerSingleton<HomeRepo>(HomeRepoImpl(getIt.get<ApiService>()));
   getIt.registerSingleton<CategoryRepo>(
       CategoryRepoImpl(getIt.get<ApiService>()));
+  getIt.registerSingleton<AppRepo>(AppRepoImpl(getIt.get<ApiService>()));
+    getIt.registerSingleton<CartRepo>(CartRepoImpl(getIt.get<ApiService>()));
 }

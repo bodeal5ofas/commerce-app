@@ -1,9 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerce_app/core/utils/app_routes.dart';
+import 'package:ecommerce_app/core/utils/custom_show_snack_bar.dart';
 import 'package:ecommerce_app/core/utils/mytheme.dart';
 import 'package:ecommerce_app/feature/home/data/models/category_tab/product/datum.dart';
 import 'package:ecommerce_app/feature/home/presentation/view/widgets/favoritue_icon_widget.dart';
+import 'package:ecommerce_app/feature/home/presentation/view_model/home_cubit/home_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class ProductIteam extends StatelessWidget {
@@ -13,7 +16,7 @@ class ProductIteam extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        GoRouter.of(context).push(AppRoutes.kDetailsView,extra: productModel);
+        GoRouter.of(context).push(AppRoutes.kDetailsView, extra: productModel);
       },
       child: Container(
         // width: 191,
@@ -81,32 +84,45 @@ class ProductIteam extends StatelessWidget {
                 ),
               ),
               Expanded(
-                child: Row(
-                  children: [
-                    Text(
-                      'Review (${productModel.ratingsAverage})',
-                      style: Theme.of(context)
-                          .textTheme
-                          .titleMedium!
-                          .copyWith(fontSize: 12),
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    const Icon(
-                      Icons.star,
-                      color: Colors.yellow,
-                    ),
-                    const Spacer(),
-                    CircleAvatar(
-                      radius: 13,
-                      backgroundColor: Mytheme.mainColor,
-                      child: const Icon(
-                        Icons.add,
-                        color: Colors.white,
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 10),
+                  child: Row(
+                    children: [
+                      Text(
+                        'Review (${productModel.ratingsAverage})',
+                        style: Theme.of(context)
+                            .textTheme
+                            .titleMedium!
+                            .copyWith(fontSize: 12),
                       ),
-                    )
-                  ],
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      const Icon(
+                        Icons.star,
+                        color: Colors.yellow,
+                      ),
+                      const Spacer(),
+                      CircleAvatar(
+                        radius: 30,
+                        backgroundColor: Mytheme.mainColor,
+                        child: IconButton(
+                          onPressed: () {
+                            BlocProvider.of<HomeCubit>(context)
+                                .addProductToCart(
+                                    productId: productModel.id ?? '');
+                          },
+                          icon: const Center(
+                            child: Icon(
+                              Icons.add,
+                              size: 18,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],
@@ -116,5 +132,3 @@ class ProductIteam extends StatelessWidget {
     );
   }
 }
-
-
