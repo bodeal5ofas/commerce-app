@@ -21,3 +21,18 @@ class GetCartProductsSuccess extends CartState {
 
   const GetCartProductsSuccess({required this.cartProductsResponse});
 }
+
+class DeleteCartProductsLoading extends CartState {}
+
+class DeleteCartProductsFailure extends CartState {
+  final String errMessage;
+
+  const DeleteCartProductsFailure({required this.errMessage});
+}
+class UpdateCartProductsLoading extends CartState {}
+
+class UpdateCartProductsFailure extends CartState {
+  final String errMessage;
+
+  const UpdateCartProductsFailure({required this.errMessage});
+}

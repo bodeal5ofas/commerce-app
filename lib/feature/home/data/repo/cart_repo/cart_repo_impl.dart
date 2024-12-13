@@ -22,4 +22,34 @@ class CartRepoImpl extends CartRepo {
       }
     }
   }
+  
+  @override
+  Future<Either<Failure, GetCartProductResponse>> updateCartProducts({required String productId,required int count})async {
+    try {
+      var data = await apiService.updateCardProducts(productId: productId,count: count);
+
+      return Right(data);
+    } catch (e) {
+      if (e is DioException) {
+        return Left(ServerFailure.fromDioException(e));
+      } else {
+        return left(ServerFailure(errorMessage: e.toString()));
+      }
+    }
+  }
+  
+  @override
+  Future<Either<Failure, GetCartProductResponse>> deleteCartProduct({required String productId}) async{
+  try {
+      var data = await apiService.deleteCardProduct(productId: productId);
+
+      return Right(data);
+    } catch (e) {
+      if (e is DioException) {
+        return Left(ServerFailure.fromDioException(e));
+      } else {
+        return left(ServerFailure(errorMessage: e.toString()));
+      }
+    }
+  }
 }

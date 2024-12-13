@@ -4,4 +4,6 @@ import 'package:ecommerce_app/feature/home/data/models/category_tab/cart/get_car
 
 abstract class CartRepo{
   Future<Either<Failure, GetCartProductResponse>> getCartProducts();
+  Future<Either<Failure, GetCartProductResponse>> updateCartProducts({required String productId,required int count});
+    Future<Either<Failure, GetCartProductResponse>> deleteCartProduct({required String productId});
 }

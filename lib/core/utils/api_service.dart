@@ -97,4 +97,23 @@ class ApiService {
         await _dio.get('https://ecommerce.routemisr.com/api/v1/cart');
     return GetCartProductResponse.fromJson(response.data);
   }
+
+  Future<GetCartProductResponse> updateCardProducts(
+      {required String productId,required int count}) async {
+    _dio.options.headers["token"] =
+        SharedPrefrenceUtils.get(key: 'token').toString();
+    var response = await _dio.put(
+        'https://ecommerce.routemisr.com/api/v1/cart/$productId',
+        data: {"count": "$count"});                   
+    return GetCartProductResponse.fromJson(response.data);
+  }
+
+   Future<GetCartProductResponse> deleteCardProduct(
+      {required String productId}) async {
+    _dio.options.headers["token"] =
+        SharedPrefrenceUtils.get(key: 'token').toString();
+    var response = await _dio.delete(
+        'https://ecommerce.routemisr.com/api/v1/cart/$productId');                   
+    return GetCartProductResponse.fromJson(response.data);
+  }
 }

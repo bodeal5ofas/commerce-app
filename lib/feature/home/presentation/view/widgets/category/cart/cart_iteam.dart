@@ -1,7 +1,9 @@
 import 'package:ecommerce_app/core/utils/mytheme.dart';
 import 'package:ecommerce_app/feature/home/data/models/category_tab/cart/add_product_cart_response/product.dart';
 import 'package:ecommerce_app/feature/home/data/models/category_tab/cart/get_cart_product_response/product_data/product_data.dart';
+import 'package:ecommerce_app/feature/home/presentation/view_model/cart_cubit/cart_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CartIteam extends StatelessWidget {
   const CartIteam({
@@ -11,6 +13,7 @@ class CartIteam extends StatelessWidget {
   final ProductData product;
   @override
   Widget build(BuildContext context) {
+    var provider = BlocProvider.of<CartCubit>(context);
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       padding: const EdgeInsets.only(
@@ -50,7 +53,10 @@ class CartIteam extends StatelessWidget {
                     ),
                     Expanded(
                       child: IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          provider.deleteCartProduct(
+                              productId: product.productData?.id ?? '');
+                        },
                         icon: Icon(
                           Icons.delete,
                           size: 23,
@@ -74,7 +80,13 @@ class CartIteam extends StatelessWidget {
                       child: Row(
                         children: [
                           IconButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                var count = product.count;
+                                count == null ? 0 : count--;
+                                provider.updateCartProduct(
+                                    productId: product.productData?.id ?? '',
+                                    count: count!);
+                              },
                               icon: const Icon(
                                 Icons.remove_circle_outline,
                                 color: Colors.white,
@@ -84,7 +96,13 @@ class CartIteam extends StatelessWidget {
                             style: Theme.of(context).textTheme.titleLarge,
                           ),
                           IconButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                var count = product.count;
+                                count == null ? 0 : count++;
+                                provider.updateCartProduct(
+                                    productId: product.productData?.id ?? '',
+                                    count: count!);
+                              },
                               icon: const Icon(
                                 Icons.add_circle_outline_sharp,
                                 color: Colors.white,
