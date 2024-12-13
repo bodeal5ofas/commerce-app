@@ -1,18 +1,23 @@
 import 'package:ecommerce_app/core/utils/mytheme.dart';
+import 'package:ecommerce_app/feature/home/data/models/category_tab/product/datum.dart';
+import 'package:ecommerce_app/feature/home/presentation/view_model/favoritue_cubit/favorite_cubit.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class FavoriteIteam extends StatelessWidget {
-  const FavoriteIteam({super.key});
-
+  const FavoriteIteam({super.key, required this.productModel});
+  final ProductModel productModel;
   @override
   Widget build(BuildContext context) {
+    var provider = BlocProvider.of<FavoriteCubit>(context);
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       padding: const EdgeInsets.only(
         right: 10,
       ),
       decoration: BoxDecoration(
+        color: Colors.transparent,
         border: Border.all(color: Mytheme.mainColor),
         borderRadius: BorderRadius.circular(30),
       ),
@@ -21,8 +26,8 @@ class FavoriteIteam extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(30),
-            child: Image.asset(
-              'assets/images/baner1.png',
+            child: Image.network(
+              productModel.imageCover ?? '',
               height: 100,
               width: 100,
               fit: BoxFit.fill,
@@ -39,33 +44,37 @@ class FavoriteIteam extends StatelessWidget {
                   children: [
                     Expanded(
                       child: Text(
-                        'Nike air jordan',
+                        productModel.title ?? '',
                         style: Theme.of(context).textTheme.titleMedium,
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
                     const Spacer(),
                     Expanded(
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: CircleAvatar(
+                      child: CircleAvatar(
                           radius: 15,
                           backgroundColor: Colors.white,
-                          child: Icon(
-                            Icons.favorite_border,
-                            size: 23,
-                            color: Mytheme.mainColor,
-                          ),
-                        ),
-                      ),
+                          child: IconButton(
+                            onPressed: () {
+                              provider.deleteProductsFavorite(
+                                  productId: productModel.id ?? '');
+                              provider.getAllFavoriteProduct();
+                            },
+                            icon: const Icon(
+                              Icons.favorite,
+                              size: 23,
+                              color: Colors.red,
+                            ),
+                          )),
                     ),
                   ],
                 ),
+      const   SizedBox(height: 15,),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'EGP 1300',
+                      'EGP ${productModel.price}',
                       style: Theme.of(context).textTheme.titleMedium,
                     ),
                     Container(

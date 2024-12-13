@@ -24,5 +24,3 @@ class AddtoCartSuccess extends HomeState {
 
   const AddtoCartSuccess({required this.productCartResponse});
 }
-
-

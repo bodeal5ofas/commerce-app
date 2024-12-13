@@ -6,5 +6,4 @@ import 'package:ecommerce_app/feature/home/data/models/category_tab/cart/get_car
 abstract class AppRepo {
   Future<Either<Failure, AddProductCartResponse>> addProductCart(
       {required String productId});
-  
 }

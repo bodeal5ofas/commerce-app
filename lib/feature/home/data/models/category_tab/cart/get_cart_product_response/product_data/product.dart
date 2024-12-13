@@ -13,7 +13,6 @@ class Product extends Equatable {
   final Category? category;
   final Brand? brand;
   final double? ratingsAverage;
-  
 
   const Product({
     this.subcategory,
@@ -24,7 +23,6 @@ class Product extends Equatable {
     this.category,
     this.brand,
     this.ratingsAverage,
-    
   });
 
   factory Product.fromJson(Map<String, dynamic> json) => Product(
@@ -42,7 +40,6 @@ class Product extends Equatable {
             ? null
             : Brand.fromJson(json['brand'] as Map<String, dynamic>),
         ratingsAverage: (json['ratingsAverage'] as num?)?.toDouble(),
-       
       );
 
   Map<String, dynamic> toJson() => {

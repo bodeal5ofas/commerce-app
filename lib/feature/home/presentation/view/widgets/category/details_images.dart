@@ -42,7 +42,7 @@ class DetailsImages extends StatelessWidget {
               ).toList(),
             ),
           ),
-          FavoriteIconWidget(),
+          FavoriteIconWidget(productId: '',),
         ],
       ),
     );

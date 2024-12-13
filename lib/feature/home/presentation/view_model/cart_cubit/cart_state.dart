@@ -8,6 +8,7 @@ abstract class CartState extends Equatable {
 }
 
 class CartInitial extends CartState {}
+
 class GetCartProductsLoading extends CartState {}
 
 class GetCartProductsFailure extends CartState {
@@ -29,6 +30,7 @@ class DeleteCartProductsFailure extends CartState {
 
   const DeleteCartProductsFailure({required this.errMessage});
 }
+
 class UpdateCartProductsLoading extends CartState {}
 
 class UpdateCartProductsFailure extends CartState {

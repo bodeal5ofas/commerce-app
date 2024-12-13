@@ -22,10 +22,11 @@ class CartCubit extends Cubit<CartState> {
     );
   }
 
-    updateCartProduct({required String productId,required int count}) async {
+  updateCartProduct({required String productId, required int count}) async {
     emit(UpdateCartProductsLoading());
 
-    var result = await cartRepo.updateCartProducts(productId: productId,count: count);
+    var result =
+        await cartRepo.updateCartProducts(productId: productId, count: count);
     result.fold(
       (error) {
         emit(UpdateCartProductsFailure(errMessage: error.errorMessage));

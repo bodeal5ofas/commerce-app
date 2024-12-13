@@ -61,7 +61,7 @@ abstract class AppRoutes {
       path: kCartView,
       builder: (context, state) => BlocProvider(
         create: (context) => CartCubit(getIt.get<CartRepo>())..getCartProduct(),
-        child:const CartView(),
+        child: const CartView(),
       ),
     ),
   ]);

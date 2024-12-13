@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class CartPrice extends StatelessWidget {
   const CartPrice({super.key, required this.price});
-final int price;
+  final int price;
   @override
   Widget build(BuildContext context) {
     return Padding(

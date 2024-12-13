@@ -1,9 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:ecommerce_app/core/service_locater.dart';
 import 'package:ecommerce_app/core/utils/app_routes.dart';
 import 'package:ecommerce_app/core/utils/custom_show_snack_bar.dart';
 import 'package:ecommerce_app/core/utils/mytheme.dart';
 import 'package:ecommerce_app/feature/home/data/models/category_tab/product/datum.dart';
+import 'package:ecommerce_app/feature/home/data/repo/favorite_repo/favorite_repo.dart';
 import 'package:ecommerce_app/feature/home/presentation/view/widgets/favoritue_icon_widget.dart';
+import 'package:ecommerce_app/feature/home/presentation/view_model/favoritue_cubit/favorite_cubit.dart';
 import 'package:ecommerce_app/feature/home/presentation/view_model/home_cubit/home_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -48,7 +51,12 @@ class ProductIteam extends StatelessWidget {
                       // width: 190,
                     ),
                   ),
-                  FavoriteIconWidget()
+                  BlocProvider(
+                    create: (context) => FavoriteCubit(getIt.get<FavoriteRepo>()),
+                    child: FavoriteIconWidget(
+                      productId: productModel.id ?? '',
+                    ),
+                  )
                 ],
               ),
               SizedBox(

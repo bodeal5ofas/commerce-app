@@ -27,6 +27,4 @@ class AppRepoImpl extends AppRepo {
       }
     }
   }
-
-  
 }
