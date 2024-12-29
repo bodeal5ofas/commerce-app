@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:ecommerce_app/feature/home/data/models/category_tab/cart/add_product_cart_response/add_product_cart_response.dart';
-import 'package:ecommerce_app/feature/home/data/models/category_tab/cart/get_cart_product_response/get_cart_product_response.dart';
+//import 'package:ecommerce_app/feature/home/data/models/category_tab/cart/get_cart_product_response/get_cart_product_response.dart';
 import 'package:ecommerce_app/feature/home/data/repo/app/app_repo.dart';
 import 'package:ecommerce_app/feature/home/presentation/view/account_view.dart';
 import 'package:ecommerce_app/feature/home/presentation/view/category_view.dart';

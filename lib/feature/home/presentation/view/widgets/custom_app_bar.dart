@@ -1,7 +1,7 @@
-import 'package:ecommerce_app/core/service_locater.dart';
+//import 'package:ecommerce_app/core/service_locater.dart';
 import 'package:ecommerce_app/core/utils/app_routes.dart';
 import 'package:ecommerce_app/core/utils/mytheme.dart';
-import 'package:ecommerce_app/feature/home/data/repo/app/app_repo.dart';
+//import 'package:ecommerce_app/feature/home/data/repo/app/app_repo.dart';
 import 'package:ecommerce_app/feature/home/presentation/view_model/home_cubit/home_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

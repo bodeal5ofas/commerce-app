@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:ecommerce_app/feature/home/data/models/category_tab/add_to_favorite_response.dart';
-import 'package:ecommerce_app/feature/home/data/models/category_tab/cart/add_product_cart_response/add_product_cart_response.dart';
+//import 'package:ecommerce_app/feature/home/data/models/category_tab/add_to_favorite_response.dart';
+//import 'package:ecommerce_app/feature/home/data/models/category_tab/cart/add_product_cart_response/add_product_cart_response.dart';
 import 'package:ecommerce_app/feature/home/data/models/category_tab/product/datum.dart';
 import 'package:ecommerce_app/feature/home/data/repo/category/category_repo.dart';
 import 'package:equatable/equatable.dart';

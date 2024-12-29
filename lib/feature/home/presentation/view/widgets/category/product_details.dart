@@ -3,7 +3,7 @@ import 'package:ecommerce_app/core/utils/mytheme.dart';
 import 'package:ecommerce_app/feature/home/data/models/category_tab/product/datum.dart';
 import 'package:ecommerce_app/feature/home/presentation/view/widgets/category/details_images.dart';
 import 'package:ecommerce_app/feature/home/presentation/view/widgets/category/details_info.dart';
-import 'package:ecommerce_app/feature/home/presentation/view/widgets/category/details_price_info.dart';
+//import 'package:ecommerce_app/feature/home/presentation/view/widgets/category/details_price_info.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 

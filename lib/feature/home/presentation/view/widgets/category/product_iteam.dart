@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerce_app/core/service_locater.dart';
 import 'package:ecommerce_app/core/utils/app_routes.dart';
-import 'package:ecommerce_app/core/utils/custom_show_snack_bar.dart';
+//import 'package:ecommerce_app/core/utils/custom_show_snack_bar.dart';
 import 'package:ecommerce_app/core/utils/mytheme.dart';
 import 'package:ecommerce_app/feature/home/data/models/category_tab/product/datum.dart';
 import 'package:ecommerce_app/feature/home/data/repo/favorite_repo/favorite_repo.dart';

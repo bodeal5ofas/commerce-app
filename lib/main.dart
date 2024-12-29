@@ -2,9 +2,9 @@ import 'package:ecommerce_app/core/service_locater.dart';
 import 'package:ecommerce_app/core/utils/app_routes.dart';
 import 'package:ecommerce_app/core/utils/mytheme.dart';
 import 'package:ecommerce_app/core/utils/shared_prefrence_utils.dart';
-import 'package:ecommerce_app/feature/auth/login/presentation/view/login_screen.dart';
-import 'package:ecommerce_app/feature/auth/register/presentation/view/register_screen.dart';
-import 'package:ecommerce_app/feature/splash/presentation/view/splash_screen.dart';
+//import 'package:ecommerce_app/feature/auth/login/presentation/view/login_screen.dart';
+//import 'package:ecommerce_app/feature/auth/register/presentation/view/register_screen.dart';
+//import 'package:ecommerce_app/feature/splash/presentation/view/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

@@ -1,5 +1,5 @@
 import 'package:ecommerce_app/core/utils/mytheme.dart';
-import 'package:ecommerce_app/feature/home/data/models/category_tab/product/datum.dart';
+//import 'package:ecommerce_app/feature/home/data/models/category_tab/product/datum.dart';
 import 'package:flutter/material.dart';
 
 class DetailsPriceInfo extends StatelessWidget {
