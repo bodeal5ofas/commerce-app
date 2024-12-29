@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 class CustomTextFormField extends StatelessWidget {
@@ -29,7 +31,10 @@ class CustomTextFormField extends StatelessWidget {
         hintText: hintText,
         suffixIcon: suffixIcon,
       ),
-      controller: controller,
+     // controller: controller,
+      onChanged: (value) {
+        log('text field ${controller.text}');
+      },
       obscureText: isPasword,
       keyboardType: textInput,
       validator: (value) {

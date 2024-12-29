@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 //import 'package:dartz/dartz.dart';
 //import 'package:ecommerce_app/core/errors/failure.dart';
@@ -11,14 +13,13 @@ part 'login_state.dart';
 class LoginCubit extends Cubit<LoginState> {
   LoginCubit(this.loginRepo) : super(LoginInitialState());
   LoginRepo loginRepo;
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+
   GlobalKey<FormState> formKey = GlobalKey();
-  login() async {
+  login({required String email, required String password}) async {
     if (formKey.currentState!.validate()) {
       emit(LoginLoadingState());
-      var result = await loginRepo.login(
-          email: emailController.text, password: passwordController.text);
+      log('cubit $email');
+      var result = await loginRepo.login(email: email, password: password);
       result.fold(
         (error) {
           emit(LoginFailureState(errMessage: error.errorMessage));

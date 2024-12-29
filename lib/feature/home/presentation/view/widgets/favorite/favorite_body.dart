@@ -18,6 +18,7 @@ class _FavoriteBodyState extends State<FavoriteBody> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Padding(
           padding: EdgeInsets.symmetric(vertical: 10),

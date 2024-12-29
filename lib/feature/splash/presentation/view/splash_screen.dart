@@ -17,11 +17,17 @@ class SplashScreen extends StatelessWidget {
           : GoRouter.of(context).push(AppRoutes.kHomewView);
     });
     return Scaffold(
-      body: Image.asset(
-        'assets/images/Splash Screen.png',
-        fit: BoxFit.fill,
-        height: double.infinity,
-        width: double.infinity,
+      backgroundColor: Colors.white,
+      body: Center(
+        child: SizedBox(
+          height: MediaQuery.of(context).size.height * 0.5,
+          child: Image.asset(
+            'assets/images/splash.jpg',
+            fit: BoxFit.fill,
+            height: double.infinity,
+            width: double.infinity,
+          ),
+        ),
       ),
     );
   }

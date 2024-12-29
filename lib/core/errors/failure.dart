@@ -52,3 +52,13 @@ class ServerFailure extends Failure {
     }
   }
 }
+
+
+// handle error
+  // catch (e) {
+  //     log(e.toString());
+  //     if (e is DioException) {
+  //       return left(ServerFailure.fromDioException(e));
+  //     }
+  //     return left(ServerFailure(errorMessage: e.toString()));
+  //   }

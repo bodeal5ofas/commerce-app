@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:ecommerce_app/core/utils/app_routes.dart';
 import 'package:ecommerce_app/core/utils/custom_show_snack_bar.dart';
 import 'package:ecommerce_app/core/utils/custom_text_form.dart';
@@ -21,10 +23,13 @@ class _LoginScreenState extends State<LoginScreen> {
   ThemeData mytheme = Mytheme().mainTheme;
 
   IconData iconPassword = Icons.visibility_off;
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
   late LoginCubit loginCubit;
   @override
   void initState() {
     loginCubit = BlocProvider.of<LoginCubit>(context);
+    log("init ${emailController.text}");
     super.initState();
   }
 
@@ -48,10 +53,11 @@ class _LoginScreenState extends State<LoginScreen> {
       child: Scaffold(
         body: Container(
           padding: const EdgeInsets.all(10),
-          child: Form(
+           child: Form(
             key: loginCubit.formKey,
             child: SingleChildScrollView(
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   const SizedBox(
@@ -81,7 +87,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   CustomTextFormField(
                       hintText: 'Enter your Email',
-                      controller: loginCubit.emailController),
+                      controller: emailController),
                   const SizedBox(
                     height: 10,
                   ),
@@ -94,7 +100,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   CustomTextFormField(
                     hintText: 'Enter your password',
-                    controller: loginCubit.passwordController,
+                    controller: passwordController,
                     isPasword: true,
                     suffixIcon: IconButton(
                         onPressed: () {
@@ -121,7 +127,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      loginCubit.login();
+                      loginCubit.login(
+                          email: emailController.text,
+                          password: passwordController.text);
                     },
                     child: Center(
                       child: Text(

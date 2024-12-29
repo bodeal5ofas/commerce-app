@@ -8,9 +8,12 @@ class CustomLogo extends StatelessWidget {
   final String? imageUrl;
   @override
   Widget build(BuildContext context) {
-    return Image.asset(
-      imageUrl ?? 'assets/images/route_appbar.png',
-      fit: BoxFit.fill,
+    return SizedBox(
+      height: 50,
+      child: Image.asset(
+        imageUrl ?? 'assets/images/logo.jpg',
+        fit: BoxFit.cover,
+      ),
     );
   }
 }

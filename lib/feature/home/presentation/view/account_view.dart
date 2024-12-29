@@ -14,10 +14,14 @@ class AccountView extends StatefulWidget {
 }
 
 class _AccountViewState extends State<AccountView> {
-  TextEditingController nameController = TextEditingController(text: SharedPrefrenceUtils.get(key: 'name').toString());
-    TextEditingController emailController = TextEditingController(text: SharedPrefrenceUtils.get(key: 'email').toString());
-      TextEditingController passwordController = TextEditingController(text: SharedPrefrenceUtils.get(key: 'password').toString());
-        TextEditingController phoneController = TextEditingController(text: SharedPrefrenceUtils.get(key: 'phone').toString());
+  TextEditingController nameController = TextEditingController(
+      text: SharedPrefrenceUtils.get(key: 'name').toString());
+  TextEditingController emailController = TextEditingController(
+      text: SharedPrefrenceUtils.get(key: 'email').toString());
+  TextEditingController passwordController = TextEditingController(
+      text: SharedPrefrenceUtils.get(key: 'password').toString());
+  TextEditingController phoneController = TextEditingController(
+      text: SharedPrefrenceUtils.get(key: 'phone').toString());
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -40,7 +44,8 @@ class _AccountViewState extends State<AccountView> {
                 IconButton(
                     onPressed: () {
                       SharedPrefrenceUtils.delete(key: 'token');
-                      GoRouter.of(context).push(AppRoutes.kloginView);
+                      GoRouter.of(context)
+                          .pushReplacement(AppRoutes.kloginView);
                     },
                     icon: Icon(
                       Icons.logout,
@@ -52,7 +57,8 @@ class _AccountViewState extends State<AccountView> {
               height: 10,
             ),
             Text(
-              'Mohamed.n@gmail.com',
+              emailController.text
+              ,
               style: Theme.of(context)
                   .textTheme
                   .titleMedium!
