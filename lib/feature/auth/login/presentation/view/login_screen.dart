@@ -53,7 +53,7 @@ class _LoginScreenState extends State<LoginScreen> {
       child: Scaffold(
         body: Container(
           padding: const EdgeInsets.all(10),
-           child: Form(
+          child: Form(
             key: loginCubit.formKey,
             child: SingleChildScrollView(
               child: Column(

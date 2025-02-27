@@ -23,6 +23,4 @@ class CategoryRepoImpl extends CategoryRepo {
       }
     }
   }
-
-  
 }

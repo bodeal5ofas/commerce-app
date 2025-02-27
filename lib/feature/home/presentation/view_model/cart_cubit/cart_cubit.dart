@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:ecommerce_app/feature/home/data/models/category_tab/cart/get_cart_product_response/get_cart_product_response.dart';
+import 'package:ecommerce_app/feature/home/data/models/category_tab/cart/get_cart_product_response/product_data/product_data.dart';
 import 'package:ecommerce_app/feature/home/data/repo/cart_repo/cart_repo.dart';
 import 'package:equatable/equatable.dart';
 
@@ -8,6 +9,7 @@ part 'cart_state.dart';
 class CartCubit extends Cubit<CartState> {
   CartCubit(this.cartRepo) : super(CartInitial());
   CartRepo cartRepo;
+  List<ProductData> products = [];
   getCartProduct() async {
     emit(GetCartProductsLoading());
 
@@ -17,6 +19,7 @@ class CartCubit extends Cubit<CartState> {
         emit(GetCartProductsFailure(errMessage: error.errorMessage));
       },
       (response) {
+       products= response.data!.products!;
         emit(GetCartProductsSuccess(cartProductsResponse: response));
       },
     );

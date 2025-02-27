@@ -57,8 +57,7 @@ class _AccountViewState extends State<AccountView> {
               height: 10,
             ),
             Text(
-              emailController.text
-              ,
+              emailController.text,
               style: Theme.of(context)
                   .textTheme
                   .titleMedium!

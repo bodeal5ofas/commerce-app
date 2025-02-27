@@ -11,7 +11,6 @@ class CategoryCubit extends Cubit<CategoryState> {
   CategoryCubit(this.categoryRepo) : super(CategoryTapInitial());
   CategoryRepo categoryRepo;
 
-
   getAllProducts() async {
     emit(CategoryTapLoading());
     var result = await categoryRepo.getAllProducts();
@@ -24,6 +23,4 @@ class CategoryCubit extends Cubit<CategoryState> {
       },
     );
   }
-
-  
 }

@@ -23,6 +23,7 @@ class FavoriteRepoImpl extends FavoriteRepo {
       }
     }
   }
+
   @override
   Future<Either<Failure, AddToFavoriteResponse>> deleteProductsFavorite(
       {required String productId}) async {
@@ -39,7 +40,7 @@ class FavoriteRepoImpl extends FavoriteRepo {
   }
 
   @override
-  Future<Either<Failure, List<ProductModel>>> getAllFavoriteProduct() async{
+  Future<Either<Failure, List<ProductModel>>> getAllFavoriteProduct() async {
     try {
       var data = await apiService.getAllFavoriteProduct();
       return Right(data);

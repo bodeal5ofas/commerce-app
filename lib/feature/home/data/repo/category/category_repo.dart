@@ -6,5 +6,4 @@ import 'package:ecommerce_app/feature/home/data/models/category_tab/product/datu
 
 abstract class CategoryRepo {
   Future<Either<Failure, List<ProductModel>>> getAllProducts();
- 
 }

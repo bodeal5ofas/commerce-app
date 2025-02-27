@@ -22,4 +22,3 @@ class CategoryTapSuccess extends CategoryState {
 
   const CategoryTapSuccess({required this.productsList});
 }
-

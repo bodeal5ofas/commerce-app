@@ -31,10 +31,10 @@ class CustomTextFormField extends StatelessWidget {
         hintText: hintText,
         suffixIcon: suffixIcon,
       ),
-     // controller: controller,
-      onChanged: (value) {
-        log('text field ${controller.text}');
-      },
+      controller: controller,
+      // onChanged: (value) {
+      //   log('text field ${controller.text}');
+      // },
       obscureText: isPasword,
       keyboardType: textInput,
       validator: (value) {
@@ -55,6 +55,7 @@ class CustomTextFormField extends StatelessWidget {
         }
         return null;
       },
+
     );
   }
 }

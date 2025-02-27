@@ -1,4 +1,10 @@
+import 'package:ecommerce_app/core/utils/custom_show_snack_bar.dart';
 import 'package:ecommerce_app/core/utils/mytheme.dart';
+import 'package:ecommerce_app/core/utils/shared_prefrence_utils.dart';
+import 'package:ecommerce_app/core/utils/stripe_service.dart';
+import 'package:ecommerce_app/feature/home/data/models/payment_stripe/payment_input_model.dart';
+import 'package:ecommerce_app/feature/home/presentation/view/widgets/category/cart/payment_method.dart';
+import 'package:ecommerce_app/feature/home/presentation/view/widgets/category/cart/payment_methods_card.dart';
 import 'package:flutter/material.dart';
 
 class CartPrice extends StatelessWidget {
@@ -33,7 +39,13 @@ class CartPrice extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.all(15),
                   backgroundColor: Mytheme.mainColor),
-              onPressed: () {},
+              onPressed: () {
+                showBottomSheet(
+                    context: context,
+                    builder: (context) => PaymentMethodsCard(
+                          price: price,
+                        ));
+              },
               child: Row(
                 children: [
                   Text(

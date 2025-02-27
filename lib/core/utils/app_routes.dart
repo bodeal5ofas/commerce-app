@@ -8,10 +8,13 @@ import 'package:ecommerce_app/feature/auth/register/presentation/view_model/regi
 import 'package:ecommerce_app/feature/home/data/models/category_tab/product/datum.dart';
 import 'package:ecommerce_app/feature/home/data/repo/app/app_repo.dart';
 import 'package:ecommerce_app/feature/home/data/repo/cart_repo/cart_repo.dart';
+import 'package:ecommerce_app/feature/home/data/repo/favorite_repo/favorite_repo.dart';
+import 'package:ecommerce_app/feature/home/data/repo/favorite_repo/favorite_repo_impl.dart';
 import 'package:ecommerce_app/feature/home/presentation/view/home_view.dart';
 import 'package:ecommerce_app/feature/home/presentation/view/widgets/category/cart/cart_view.dart';
 import 'package:ecommerce_app/feature/home/presentation/view/widgets/category/product_details.dart';
 import 'package:ecommerce_app/feature/home/presentation/view_model/cart_cubit/cart_cubit.dart';
+import 'package:ecommerce_app/feature/home/presentation/view_model/favoritue_cubit/favorite_cubit.dart';
 import 'package:ecommerce_app/feature/home/presentation/view_model/home_cubit/home_cubit.dart';
 import 'package:ecommerce_app/feature/splash/presentation/view/splash_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -53,7 +56,11 @@ abstract class AppRoutes {
         path: kDetailsView,
         builder: (context, state) {
           ProductModel args = state.extra as ProductModel;
-          return ProductDetails(
+          return
+              // BlocProvider(
+              //   create: (context) => FavoriteCubit(getIt.get<FavoriteRepo>()),
+              //   child:
+              ProductDetails(
             productModel: args,
           );
         }),

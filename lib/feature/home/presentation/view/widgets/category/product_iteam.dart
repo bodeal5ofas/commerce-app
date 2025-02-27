@@ -52,7 +52,8 @@ class ProductIteam extends StatelessWidget {
                     ),
                   ),
                   BlocProvider(
-                    create: (context) => FavoriteCubit(getIt.get<FavoriteRepo>()),
+                    create: (context) =>
+                        FavoriteCubit(getIt.get<FavoriteRepo>()),
                     child: FavoriteIconWidget(
                       productId: productModel.id ?? '',
                     ),

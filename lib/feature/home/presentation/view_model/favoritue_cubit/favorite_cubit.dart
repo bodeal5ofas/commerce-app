@@ -39,15 +39,14 @@ class FavoriteCubit extends Cubit<FavoriteState> {
     );
   }
 
-  getAllFavoriteProduct()async{
-      emit(GetAllFavoriteLoading());
+  getAllFavoriteProduct() async {
+    emit(GetAllFavoriteLoading());
     var result = await favoriteRepo.getAllFavoriteProduct();
     result.fold(
       (error) {
         emit(GetAllFavoriteFailure(errMessage: error.errorMessage));
       },
       (products) {
-        
         emit(GetAllFavoriteSuccess(products: products));
       },
     );

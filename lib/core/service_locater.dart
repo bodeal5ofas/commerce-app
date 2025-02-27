@@ -27,5 +27,6 @@ void setUpLocator() async {
       CategoryRepoImpl(getIt.get<ApiService>()));
   getIt.registerSingleton<AppRepo>(AppRepoImpl(getIt.get<ApiService>()));
   getIt.registerSingleton<CartRepo>(CartRepoImpl(getIt.get<ApiService>()));
-  getIt.registerSingleton<FavoriteRepo>(FavoriteRepoImpl(getIt.get<ApiService>()));
+  getIt.registerSingleton<FavoriteRepo>(
+      FavoriteRepoImpl(getIt.get<ApiService>()));
 }

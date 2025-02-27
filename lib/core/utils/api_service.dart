@@ -2,8 +2,10 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:ecommerce_app/core/utils/shared_prefrence_utils.dart';
+import 'package:ecommerce_app/core/utils/stripe_service.dart';
 import 'package:ecommerce_app/feature/auth/login/data/models/login_request.dart';
 import 'package:ecommerce_app/feature/auth/login/data/models/login_response/login_response.dart';
+import 'package:ecommerce_app/feature/auth/register/data/models/customer_model/customer_model.dart';
 import 'package:ecommerce_app/feature/auth/register/data/models/register_request_model.dart';
 import 'package:ecommerce_app/feature/auth/register/data/models/register_response_sucess_model/register_response_sucess_model.dart';
 import 'package:ecommerce_app/feature/home/data/models/category_tab/add_to_favorite_response.dart';
@@ -39,6 +41,8 @@ class ApiService {
     SharedPrefrenceUtils.set(key: 'email', value: email);
     SharedPrefrenceUtils.set(key: 'password', value: password);
     SharedPrefrenceUtils.set(key: 'phone', value: phone);
+    CustomerModel data = await StripeService().createCustomer(name: name);
+    SharedPrefrenceUtils.set(key: 'id', value: data.id);
     return RegisterResponseSucessModel.fromJson(response.data);
   }
 

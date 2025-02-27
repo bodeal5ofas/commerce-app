@@ -42,7 +42,7 @@ class ProductDetails extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            DetailsImages(images: productModel.images ?? []),
+            DetailsImages(productModel: productModel),
             const SizedBox(
               height: 10,
             ),

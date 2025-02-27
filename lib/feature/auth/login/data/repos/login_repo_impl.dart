@@ -11,6 +11,7 @@ class LoginRepoImpl extends LoginRepo {
   ApiService apiService;
   @override
   LoginRepoImpl(this.apiService);
+  @override
   Future<Either<Failure, LoginResponse>> login(
       {required String email, required String password}) async {
     try {
